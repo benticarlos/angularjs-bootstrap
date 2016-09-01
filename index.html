@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="operacion">
+<head>
+<meta charset="utf-8">
+	<title>Angular y bootstrap</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-2.2.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+ 
+<div class="container text-center" ng-controller="preguntasController">
+	
+	<div class="jumbotron">
+		<h2>Angular JS + Bootstrap</h2>
+	</div>
+	
+	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+		<div class="panel-body">
+			<p>¿Cuál es el resultado de la siguiente operación 6*9-12?</p>
+			<p id="resultado"></p>
+			<button class="btn btn-info" data-toggle="modal" data-target=".ventanaModal" ng-click="respuesta()">Calcular</button>
+			<button class="btn btn-success" data-toggle="modal" data-target=".ventanaModal" ng-click="respuesta()">Resultado</button>
+			<button class="btn btn-danger" data-toggle="modal" data-target=".ventanaModal" ng-click="respuesta()">IGUAL A</button>
+		</div>
+	</div>
+	
+	<div class="modal fade ventanaModal">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<h1>{{resultado}}</h1>
+			</div>
+		</div>
+	</div>
+ 
+</div>
+ 
+<script type="text/javascript">
+	
+var miApp = angular.module('operacion', []);//inicializamos la aplicacion angular
+ 
+miApp.controller('preguntasController', function ($scope) {
+ 
+		$scope.respuesta = function(){
+			$scope.resultado = 6*9-12; // invocado por la directiva ng-click
+			$('#resultado').text("El resultado es: "+ $scope.resultado); // del jquery
+			// #resultado de <p id=resultado> 
+		}
+	
+});
+ 
+</script>
+</body>
+</html>
