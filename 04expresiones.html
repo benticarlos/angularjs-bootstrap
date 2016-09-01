@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="expresiones"> <!-- invocamos al angular con el nombre expresiones en la directiva ng-app -->
+<head> <!--las expresiones son la forma ideal de relacionar el modelo con la vista -->
+<meta charset="utf-8">
+	<title>Expresiones</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="miControlador"><!-- ng-controller: directiva controlador en angularjs -->
+		<!-- miControlador es llamado en <script></script> -->
+		{{ mensaje }} <!-- variable en el html -->	
+ 
+	</div>
+ 
+ 
+<script type="text/javascript">
+	// 
+	var expresiones = angular.module('expresiones',[]); // inicializar la aplicacion con la variable expresiones 
+ 	// se está inicializando los modulos en [] que vamos a cargar al angularjs
+ 	expresiones.controller('miControlador', function($scope){ //incluimos la expresion y es invocado con el nomb del controlador
+ 		// $scope: variable especial que utiliza angular para acceder a todos los elementos a traves de un function
+ 		$scope.mensaje = "Esto es una expresion de angular"; //invoca al scope con la variable: .mensaje (que es un objeto js)
+ 	});
+ 
+</script>
+ 
+</body>
+</html>

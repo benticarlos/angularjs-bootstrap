@@ -1,0 +1,111 @@
+<!DOCTYPE html><!-- Modificar Estilos CSS Completo -->
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Estilos</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<style>
+		img{
+			display: block;
+			margin: auto;
+		}
+		.preguntas{
+			width: 400px;
+			margin: 30px auto;
+			background: silver;
+			padding: 20px;
+			text-align: center;
+		}
+		.segundoEstilo{
+ 
+			background: blue;
+		}
+	</style>
+</head>
+<body ng-app="estiloApp">
+
+<div ng-controller="controladorEstilos">
+	
+ <!-- directiva ng-src, nos permite cambiar la ruta del elementos -->
+	<img ng-src="{{imagenActiva}}">
+	
+  <!-- directiva ng-hide ng-show, nos permite ocultar o mostrar elementos -->
+  <!-- directiva ng-hide ng-show, solo recibe valores booleanos true/false-->
+	<div ng-hide="oclutarImagen">
+		<img src="img/box.png">
+	</div>
+ 
+ <!-- directiva ng-switch, funciona igual al control switch -->
+	<div ng-switch="opcion">
+		<center>
+			<!-- directiva ng-switch-when, funciona con respecto a la opcion switch -->
+			<!-- para asignarle la opcion es $scope.opcion en el <script></script>  -->
+        <h2 ng-switch-when="a">Ojos abiertos</h2>
+        <h2 ng-switch-when="b">Ojos cerrados</h2>
+		</center>
+		
+	</div>
+	
+	<div class="preguntas" ng-style="estilosAngular" ng-class="clasesAngular">
+		<button ng-click="opcionA()">Opcion A</button>
+		<button ng-click="opcionB()">Opcion B</button>
+		<hr>
+		<button ng-click="cambiarEstilo()">Cambiar Estilo</button>
+		<button ng-click="cambiarClase()">Cambiar Clase</button>
+		<hr>
+		<button ng-click="ocultarCajas()">Ocultar Caja</button>
+		<button ng-click="mostrarCajas()">Mostrar Caja</button>
+	</div>
+	
+</div>
+ 
+ 
+<script type="text/javascript">
+	
+	var misEstilos = angular.module('estiloApp', []);//inicializamos la aplicacion angular
+ 
+	misEstilos.controller('controladorEstilos', function($scope){
+		// carga la imagen por defecto
+		$scope.imagenActiva = 'img/Kawaii_2.jpg';
+	
+		$scope.opcionA = function(){
+			$scope.opcion = 'a';// evaluado en el directiva ng-switch
+			//imagenActiva hace llamada a la ng-src
+			$scope.imagenActiva = 'img/Kawaii_1.jpg';
+		}
+ 
+		$scope.opcionB = function(){
+			$scope.opcion = 'b'; // evaluado en el directiva ng-switch
+			//imagenActiva hace llamada a la ng-src
+			$scope.imagenActiva = 'img/Kawaii_3.jpg';
+		}
+ 
+		$scope.cambiarEstilo = function(){
+ 
+			$scope.estilosAngular = {
+ 
+				width:'600px',
+				height:'200px',
+				borderRadius:'10px'
+			}
+		}
+ 
+		$scope.cambiarClase = function(){
+			$scope.clasesAngular = 'segundoEstilo';
+		}
+ 
+		$scope.ocultarCajas = function(){
+			$scope.oclutarImagen = true; //true oculta la imagen de ng-hide
+		} 
+ 
+		$scope.mostrarCajas = function(){
+			$scope.oclutarImagen = false; 
+		}
+ 
+ 
+	});
+ 
+</script>
+ 
+</body>
+</html>

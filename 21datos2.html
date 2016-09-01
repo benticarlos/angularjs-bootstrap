@@ -1,0 +1,63 @@
+<!DOCTYPE html><!-- Manejo y Colecciones de Datos -->
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Coleciones de datos</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body ng-app="coleccionesApp">
+ 
+<div ng-controller="controladorColecciones">
+	<h3>Haz click en cualquier elemento:</h3> 
+	<ul>
+		<!-- ng-click se recupera la info y se muestra con un alert -->
+		<li ng-repeat="datoIndividual in datos" ng-click="mostrarDatos(datoIndividual)">{{datoIndividual}}</li>
+	</ul>
+ 
+	<input type="text" ng-model="nuevoItem">
+	<!-- ng-click con la funcion que vincula el evento de la info -->
+	<button ng-click="agregar()">Guardar</button>
+	<ul>
+		<!-- ng-repeat
+			actor es la var instancia que permite almacena los valores de datos
+			in el parametro in permite iterar segun el num de elementos
+			actores es la variable
+			actor.nombre
+			var.obj (variable instancia nombre)
+		  -->
+		<li ng-repeat="actor in actores" ng-click="mostrarDatos(actor.apellido)">{{actor.nombre}}</li>
+	</ul>
+	
+</div>
+ 
+<script type="text/javascript">
+	
+var coleccionDatosApp = angular.module('coleccionesApp', []);
+//inicializamos la aplicacion angular
+ 
+coleccionDatosApp.controller('controladorColecciones',function($scope){
+	// var datos es array
+	$scope.datos = ['piedra','papel','tijera'];
+   // var actores es array con objeto, muy utilizados en sistemas de informacion
+	$scope.actores = [
+			{nombre: "Arnold", apellido:"Schwarzenegger"},
+			{nombre: "Chuck", apellido:"Norris"},
+			{nombre: "Bruce", apellido:"Lee"}
+ 
+	]
+ 
+	$scope.agregar = function(){
+ 
+		$scope.datos.push($scope.nuevoItem);	
+	}
+	// var info nos muestra la información 
+	$scope.mostrarDatos = function(info){
+		alert('Elegiste: ' + info);
+	}
+ 
+});
+ 
+</script>
+ 
+</body>
+</html>

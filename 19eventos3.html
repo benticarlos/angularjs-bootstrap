@@ -1,0 +1,52 @@
+<!DOCTYPE html><!-- Eventos del Teclado -->
+<html ng-app="eventosApp">
+<head>
+<meta charset="utf-8">
+	<title>Evento de teclado</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="eventosController">
+	<!-- ng-keydown se activa mientras mantengamos presionado el teclado
+		ng-keypress se activa mientras se presiona una vez la tecla
+		ng-keyup se activa mientras soltado presionado el teclado
+		variable especial $event recupera el evento (de presionar tecla)
+	  -->
+	<input type="text" autofocus="true" ng-keydown="detectarTecla($event)">
+	<br>
+	<p>{{estado}}</p>
+ 
+</div>
+<script type="text/javascript">
+	
+var miApp = angular.module('eventosApp', []);//inicializamos la aplicacion angular
+ 
+miApp.controller('eventosController',function($scope){
+	//metodo detectarTecla con el evento e, llamado en el switch
+	$scope.detectarTecla =  function(e){
+		// ver https://docs.angularjs.org/api/ng/directive/ngKeyup
+		// ver https://docs.angularjs.org/api/ng/directive/ngKeydown
+		switch(e.keyCode){
+			case 37:
+				// la variable estado se mostrada en el  {{estado}} dentro del html
+				$scope.estado = "izquierda";
+				break;
+			case 38:
+				$scope.estado = "arriba";
+				break;
+			case 39:
+				$scope.estado = "derecha";
+				break;
+			case 40:
+				$scope.estado = "abajo";
+				break;		
+		}
+ 
+	}
+ 
+});
+ 
+</script>
+ 
+</body>
+</html>

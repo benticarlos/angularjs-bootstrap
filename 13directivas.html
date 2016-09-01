@@ -1,0 +1,25 @@
+<!DOCTYPE html><!-- Directivas -->
+<html><!-- Directivas son elementos que se insertar en el html -->
+<head>
+<meta charset="utf-8">
+	<title>Directivas</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body ng-app="directivas"><!-- invocamos la iniciacion del angular-->
+ <!-- invocamos el controlador con la directiva ng-controller + su nombre -->
+
+<input type="text" ng-model="textoModelo">
+ 
+<p>{{textoModelo}}</p>
+<p>{{5+5}}</p><!--  -->
+<!-- ng-bind no muestra el codigo fuente y luego carga la operacion (anterior {{5+5}}) -->
+<p ng-bind="5+5"></p>
+ 
+<script type="text/javascript">
+ 
+var directivaApp = angular.module('directivas', [])//inicializamos la aplicacion angular
+// se hace el metodo a
+</script>
+ 
+</body>
+</html>

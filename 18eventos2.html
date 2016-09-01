@@ -1,0 +1,64 @@
+<!DOCTYPE html><!-- Eventos Touch de un dispositivo mobile -->
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Eventos touch Angular JS</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="angular-touch.min.js"></script>
+	<style>
+		#cuadrado{ background: red; width: 100px; height: 100px; margin: 30px 10px;}
+	</style>
+</head>
+<body ng-app="eventosApp">
+ 
+	<div ng-controller="eventosController">
+		<!-- siempre usar la funcion con ()  -->
+		<button ng-click="saludo()">Click</button>
+		<button ng-dblclick="saludo()">Doble Click</button>
+		<p ng-click="saludo()">También funciona en párrafos</p>
+		<strong>{{conteoClicks}}</strong>
+		<!-- ng-swipe-left se activa cuando movemos a la izq en un celular tactil  -->
+		<!-- ng-swipe-right se activa cuando movemos a la izq en un celular tactil  -->
+		<div id="cuadrado" ng-mouseenter="dentroDelDiv()" ng-mouseleave="fueraDelDiv()" ng-swipe-left="swipeIzq()" ng-swipe-right="swipeDer()"></div>
+		<strong>Estado {{estado}}</strong>
+		
+	</div>
+ 
+ 
+<script type="text/javascript">
+	
+	var miApp = angular.module('eventosApp', ['ngTouch']); //inicializamos la aplicacion angular
+ 
+	miApp.controller('eventosController',function($scope){
+ 
+ 
+		$scope.estado = 'mouse';
+		$scope.conteoClicks = 0;
+		$scope.saludo = function(){
+ 
+			$scope.conteoClicks++;
+		}
+		$scope.dentroDelDiv = function(){
+ 
+			$scope.estado = 'MouseEnter activo';
+		}
+		$scope.fueraDelDiv = function(){
+ 
+			$scope.estado = 'MouseLeave Fuera';
+		}
+ 
+		$scope.swipeIzq = function(){
+ 
+			$scope.estado = '<-- Swipe/Desliza';
+		}
+		$scope.swipeDer = function(){
+ 
+			$scope.estado = 'Swipe/Desliza -->';
+		}
+ 
+	});
+ 
+</script>
+ 
+</body>
+</html>

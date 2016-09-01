@@ -1,0 +1,32 @@
+{
+	"integrantes": [
+ 
+		{
+			"nombre": "john 'Hannibal' Smith",
+			"especialidad": "Estrategia",
+			"rango": "Coronel"
+		},
+		{
+			"nombre": "Templeton Peck",
+			"especialidad": "Logistica",
+			"rango": "Teniente"
+		},
+		{
+			"nombre": "H.M. Murdock",
+			"especialidad": "Piloto",
+			"rango": "Capitan"
+		},
+		{
+			"nombre": "B.A Baracus",
+			"especialidad": "Artilleria",
+			"rango": "Sargento"
+		},
+		{ 
+			"nombre": "Carlos Benti",
+			"especialidad": "Estrategia",
+			"rango": "General"
+		}
+ 
+	],
+	"historia": "Hace 10 años un tribunal militar condenó a prisión a un grupo de comandos por un crimen que no cometieron, esos hombres escaparon de prisión y si alguien tiene un problema, necesita ayuda y puede localizarlos, tal vez pueda contratarlos."
+}
